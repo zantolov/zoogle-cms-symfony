@@ -1,1 +1,1 @@
-# zoogle-cms-twig
+# zoogle-cms-symfony
