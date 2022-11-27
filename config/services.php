@@ -41,14 +41,10 @@ return function (ContainerConfigurator $configurator) {
     $services->set(DocumentRepository::class);
     $services->set(BaseGoogleDriveClient::class);
     $services->set(GoogleDriveClientFactory::class);
+    $services->set(GoogleDriveAuth::class);
+    $services->set(Configuration::class);
 
     $services->set(ImageController::class)->tag('controller.service_arguments');
-
-    $services->set(GoogleDriveAuth::class)
-        ->args([
-            '$authConfigPath' => '%kernel.project_dir%/%env(GOOGLE_DRIVE_API_AUTH_FILE_PATH)%',
-            '$clientId' => '%env(GOOGLE_DRIVE_API_CLIENT_ID)%',
-        ]);
 
     $services->set(CachedGoogleDriveClient::class)
         ->args([
@@ -56,15 +52,7 @@ return function (ContainerConfigurator $configurator) {
         ]);
 
     $services->set(GoogleDriveClient::class)
-        ->factory([service(GoogleDriveClientFactory::class), 'create'])
-        ->args([
-            '$useCache' => '%env(bool:ZOOGLE_CACHE)%',
-        ]);
-
-    $services->set(Configuration::class)
-        ->args([
-            '$rootDirectoryId' => '%env(bool:GOOGLE_DRIVE_ROOT_DIRECTORY_ID)%',
-        ]);
+        ->factory([service(GoogleDriveClientFactory::class), 'create']);
 
     $services->instanceof(ElementConverter::class)->tag('zoogle_document_converter');
     $services->set(ContentConverter::class);
