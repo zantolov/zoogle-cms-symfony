@@ -7,11 +7,11 @@ namespace Zantolov\Zoogle\Symfony\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use Zantolov\Zoogle\Cms\Service\Document\DocumentRepository;
+use Zantolov\Zoogle\Cms\Service\Html\Processing\HtmlProcessingHub;
 use Zantolov\Zoogle\Model\Model\Document\Document;
 use Zantolov\Zoogle\Model\Model\Document\DocumentElement;
 use Zantolov\Zoogle\Model\Service\HtmlConverter;
-use Zantolov\ZoogleCms\Service\Document\DocumentRepository;
-use Zantolov\ZoogleCms\Service\Html\Processing\HtmlProcessingHub;
 
 final class ZoogleCmsTwigExtension extends AbstractExtension
 {
