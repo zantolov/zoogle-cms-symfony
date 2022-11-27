@@ -28,6 +28,7 @@ use Zantolov\Zoogle\Model\Service\Processing\DocumentProcessor;
 use Zantolov\Zoogle\Model\Service\Processing\ListNormalizationProcessor;
 use Zantolov\Zoogle\Model\Service\Processing\ObjectNormalizationProcessor;
 use Zantolov\Zoogle\Symfony\Controller\ImageController;
+use Zantolov\Zoogle\Symfony\Service\LocalImagePersistenceProcessor;
 use Zantolov\Zoogle\Symfony\Twig\ZoogleCmsTwigExtension;
 
 return function (ContainerConfigurator $configurator) {
@@ -76,6 +77,7 @@ return function (ContainerConfigurator $configurator) {
     $services->instanceof(HtmlProcessor::class)->tag('zoogle_html_processor');
     $services->set(YoutubeVideoProcessor::class);
     $services->set(QuoteFormattingProcessor::class);
+    $services->set(LocalImagePersistenceProcessor::class);
     $services->set(HtmlProcessingHub::class)
         ->args([
             '$processors' => tagged_iterator('zoogle_html_processor'),
