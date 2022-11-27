@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Zantolov\ZoogleCms\Bridge\Twig;
+namespace Zantolov\Zoogle\Symfony\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
