@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb2f22bb898c4f0f2fb66b0d6637bca1",
+    "content-hash": "746b5d99dc2082fecb7f97dfe8e9b808",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3314,12 +3314,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zantolov/zoogle-cms.git",
-                "reference": "12b8e02cd3dde8e50b48c2e43d2ba56fa6e6b640"
+                "reference": "f8247d1f1c5d1070d3a8900e1b5641fe14543b6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zantolov/zoogle-cms/zipball/12b8e02cd3dde8e50b48c2e43d2ba56fa6e6b640",
-                "reference": "12b8e02cd3dde8e50b48c2e43d2ba56fa6e6b640",
+                "url": "https://api.github.com/repos/zantolov/zoogle-cms/zipball/f8247d1f1c5d1070d3a8900e1b5641fe14543b6f",
+                "reference": "f8247d1f1c5d1070d3a8900e1b5641fe14543b6f",
                 "shasum": ""
             },
             "require": {
@@ -3370,7 +3370,7 @@
                 "source": "https://github.com/zantolov/zoogle-cms/tree/master",
                 "issues": "https://github.com/zantolov/zoogle-cms/issues"
             },
-            "time": "2025-04-13T19:07:54+00:00"
+            "time": "2025-04-13T19:22:32+00:00"
         },
         {
             "name": "zantolov/zoogle-model",
@@ -3378,12 +3378,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zantolov/zoogle-model.git",
-                "reference": "1627b88a189c426129f3b219ed86aa72d1f49b65"
+                "reference": "b66d791fc02568f5499293edf5e2458f8a83cad0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zantolov/zoogle-model/zipball/1627b88a189c426129f3b219ed86aa72d1f49b65",
-                "reference": "1627b88a189c426129f3b219ed86aa72d1f49b65",
+                "url": "https://api.github.com/repos/zantolov/zoogle-model/zipball/b66d791fc02568f5499293edf5e2458f8a83cad0",
+                "reference": "b66d791fc02568f5499293edf5e2458f8a83cad0",
                 "shasum": ""
             },
             "require": {
@@ -3392,7 +3392,7 @@
                 "ext-dom": "*",
                 "ext-json": "*",
                 "google/apiclient": "^2.11",
-                "php": ">=8.3",
+                "php": "^8.4",
                 "thecodingmachine/safe": "^3.0"
             },
             "require-dev": {
@@ -3448,7 +3448,7 @@
                 "source": "https://github.com/zantolov/zoogle-model/tree/master",
                 "issues": "https://github.com/zantolov/zoogle-model/issues"
             },
-            "time": "2025-04-13T19:08:31+00:00"
+            "time": "2025-04-13T19:21:15+00:00"
         }
     ],
     "packages-dev": [
@@ -7086,11 +7086,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/config": 20,
-        "symfony/dependency-injection": 20,
-        "symfony/framework-bundle": 20,
-        "symfony/http-kernel": 20,
-        "twig/twig": 20,
         "zantolov/toolbelt-dev": 20,
         "zantolov/zoogle-cms": 20
     },
