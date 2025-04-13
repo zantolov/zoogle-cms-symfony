@@ -8,9 +8,9 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\GoogleDriveAuth;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\GoogleDriveClient;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Configuration\Configuration;
+use Zantolov\ZoogleCms\Client\GoogleDriveAuth;
+use Zantolov\ZoogleCms\Client\GoogleDriveClient;
+use Zantolov\ZoogleCms\Configuration\Configuration;
 
 final class ZoogleCmsExtension extends Extension
 {
@@ -20,6 +20,16 @@ final class ZoogleCmsExtension extends Extension
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new ZoogleCmsConfiguration();
+        /**
+         * @var array{
+         *     google_api: array{
+         *       auth_file: string,
+         *       client_id: string,
+         *       google_drive_root_directory: string,
+         *     },
+         *     cache: bool
+         * } $config
+         */
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__));

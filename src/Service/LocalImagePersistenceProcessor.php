@@ -29,12 +29,12 @@ final class LocalImagePersistenceProcessor extends AbstractElementDocumentProces
 
     protected function processElement(DocumentElement $element, Document $document): DocumentElement
     {
-        \assert($element instanceof ImageElement);
+        assert($element instanceof ImageElement);
 
         $imageHash = sha1($document->id.$element->id);
         $pathParts = pathinfo($element->src);
         $extension = $pathParts['extension'] ?? 'jpg';
-        $filename = \Safe\sprintf('%s.%s', $imageHash, $extension);
+        $filename = sprintf('%s.%s', $imageHash, $extension);
 
         /**
          * @todo add support for different persistence adapters
@@ -45,7 +45,7 @@ final class LocalImagePersistenceProcessor extends AbstractElementDocumentProces
         $proxyedImageUrl = $this->router->generate(
             'zoogle_cms_image',
             ['filename' => $filename],
-            RouterInterface::ABSOLUTE_URL
+            RouterInterface::ABSOLUTE_URL,
         );
 
         return $element->withSrc($proxyedImageUrl);

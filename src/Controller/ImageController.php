@@ -18,6 +18,7 @@ final class ImageController extends AbstractController
      */
     public function __invoke(string $filename, CacheItemPoolInterface $cache): Response
     {
+        /** @var string|null $content */
         $content = $cache->getItem($filename)->get();
         if (empty($content)) {
             throw new NotFoundHttpException();

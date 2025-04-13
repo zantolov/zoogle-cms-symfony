@@ -7,18 +7,18 @@ namespace Zantolov\Zoogle\Symfony\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use Zantolov\Zoogle\Cms\Service\Document\DocumentRepository;
-use Zantolov\Zoogle\Cms\Service\Html\Processing\HtmlProcessingHub;
 use Zantolov\Zoogle\Model\Model\Document\Document;
 use Zantolov\Zoogle\Model\Model\Document\DocumentElement;
 use Zantolov\Zoogle\Model\Service\HtmlConverter;
+use Zantolov\ZoogleCms\Content\Document\DocumentFactory;
+use Zantolov\ZoogleCms\Content\Html\Processing\HtmlProcessingHub;
 
 final class ZoogleCmsTwigExtension extends AbstractExtension
 {
     public function __construct(
-        private DocumentRepository $documentRepository,
+        private DocumentFactory $documentFactory,
         private HtmlConverter $htmlConverter,
-        private HtmlProcessingHub $htmlProcessingHub
+        private HtmlProcessingHub $htmlProcessingHub,
     ) {
     }
 
@@ -46,7 +46,7 @@ final class ZoogleCmsTwigExtension extends AbstractExtension
 
     public function zoogleDocument(string $url): Document
     {
-        return $this->documentRepository->getByUrl($url);
+        return $this->documentFactory->fromUrl($url);
     }
 
     public function zoogleHtml(Document|DocumentElement $item): string
@@ -54,8 +54,6 @@ final class ZoogleCmsTwigExtension extends AbstractExtension
         if ($item instanceof Document) {
             return $this->documentHtml($item);
         }
-
-        \assert($item instanceof DocumentElement);
 
         return $this->elementHtml($item);
     }

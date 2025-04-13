@@ -9,20 +9,20 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class ZoogleCmsConfiguration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('zoogle_cms');
         $rootNode = $treeBuilder->getRootNode();
-        $rootNode->children()->booleanNode('cache')->end();
+        $rootNode->children()->booleanNode('cache')->end(); // @phpstan-ignore-line
 
-        $rootNode->children()
+        $rootNode->children() // @phpstan-ignore-line
             ->arrayNode('google_api')
             ->children()
             ->scalarNode('client_id')->end()
             ->scalarNode('auth_file')->end()
             ->scalarNode('google_drive_root_directory')->end()
             ->end()
-            ->end() // twitter
+            ->end()
             ->end();
 
         return $treeBuilder;
