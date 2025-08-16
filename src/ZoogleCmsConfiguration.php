@@ -15,16 +15,6 @@ final class ZoogleCmsConfiguration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         $rootNode->children()->booleanNode('cache')->end(); // @phpstan-ignore-line
 
-        $rootNode->children() // @phpstan-ignore-line
-            ->arrayNode('google_api')
-            ->children()
-            ->scalarNode('client_id')->end()
-            ->scalarNode('auth_file')->end()
-            ->scalarNode('google_drive_root_directory')->end()
-            ->end()
-            ->end()
-            ->end();
-
         return $treeBuilder;
     }
 }

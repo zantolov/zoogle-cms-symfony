@@ -35,17 +35,8 @@ final class ZoogleCmsExtension extends Extension
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__));
         $loader->load('../config/services.php');
 
-        $container->getDefinition(GoogleDriveAuth::class)->setArguments([
-            '$authConfigPath' => $config['google_api']['auth_file'],
-            '$clientId' => $config['google_api']['client_id'],
-        ]);
-
         $container->getDefinition(GoogleDriveClient::class)->setArguments([
             '$useCache' => $config['cache'],
-        ]);
-
-        $container->getDefinition(Configuration::class)->setArguments([
-            '$rootDirectoryId' => $config['google_api']['google_drive_root_directory'],
         ]);
     }
 }

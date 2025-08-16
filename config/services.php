@@ -4,17 +4,6 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Zantolov\Zoogle\Cms\Service\Document\DocumentRepository;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\BaseGoogleDriveClient;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\CachedGoogleDriveClient;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\GoogleDriveAuth;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\GoogleDriveClient;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Client\GoogleDriveClientFactory;
-use Zantolov\Zoogle\Cms\Service\GoogleDrive\Configuration\Configuration;
-use Zantolov\Zoogle\Cms\Service\Html\Processing\HtmlProcessingHub;
-use Zantolov\Zoogle\Cms\Service\Html\Processing\HtmlProcessor;
-use Zantolov\Zoogle\Cms\Service\Html\Processing\QuoteFormattingProcessor;
-use Zantolov\Zoogle\Cms\Service\Html\Processing\YoutubeVideoProcessor;
 use Zantolov\Zoogle\Model\Service\Converting\ContentConverter;
 use Zantolov\Zoogle\Model\Service\Converting\Converter;
 use Zantolov\Zoogle\Model\Service\Converting\ElementConverter;
@@ -27,9 +16,20 @@ use Zantolov\Zoogle\Model\Service\Processing\DocumentProcessingHub;
 use Zantolov\Zoogle\Model\Service\Processing\DocumentProcessor;
 use Zantolov\Zoogle\Model\Service\Processing\ListNormalizationProcessor;
 use Zantolov\Zoogle\Model\Service\Processing\ObjectNormalizationProcessor;
+use Zantolov\Zoogle\Symfony\Client\CachedGoogleDriveClient;
+use Zantolov\Zoogle\Symfony\Client\GoogleDriveClientFactory;
 use Zantolov\Zoogle\Symfony\Controller\ImageController;
 use Zantolov\Zoogle\Symfony\Service\LocalImagePersistenceProcessor;
 use Zantolov\Zoogle\Symfony\Twig\ZoogleCmsTwigExtension;
+use Zantolov\ZoogleCms\Client\BaseGoogleDriveClient;
+use Zantolov\ZoogleCms\Client\GoogleDriveAuth;
+use Zantolov\ZoogleCms\Client\GoogleDriveClient;
+use Zantolov\ZoogleCms\Configuration\Configuration;
+use Zantolov\ZoogleCms\Content\Document\DocumentFactory;
+use Zantolov\ZoogleCms\Content\Html\Processing\HtmlProcessingHub;
+use Zantolov\ZoogleCms\Content\Html\Processing\HtmlProcessor;
+use Zantolov\ZoogleCms\Content\Html\Processing\QuoteFormattingProcessor;
+use Zantolov\ZoogleCms\Content\Html\Processing\YoutubeVideoProcessor;
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator->services()
@@ -39,11 +39,11 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set(HtmlConverter::class);
     $services->set(ZoogleCmsTwigExtension::class);
-    $services->set(DocumentRepository::class);
     $services->set(BaseGoogleDriveClient::class);
     $services->set(GoogleDriveClientFactory::class);
     $services->set(GoogleDriveAuth::class);
     $services->set(Configuration::class);
+    $services->set(DocumentFactory::class);
 
     $services->set(ImageController::class)->tag('controller.service_arguments');
 
