@@ -8,9 +8,10 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
-use Zantolov\ZoogleCms\Client\GoogleDriveAuth;
+use Symfony\Component\DependencyInjection\Reference;
+use Zantolov\Zoogle\Symfony\Client\CachedGoogleDriveClient;
+use Zantolov\Zoogle\Symfony\Service\LocalImagePersistenceProcessor;
 use Zantolov\ZoogleCms\Client\GoogleDriveClient;
-use Zantolov\ZoogleCms\Configuration\Configuration;
 
 final class ZoogleCmsExtension extends Extension
 {
@@ -38,5 +39,15 @@ final class ZoogleCmsExtension extends Extension
         $container->getDefinition(GoogleDriveClient::class)->setArguments([
             '$useCache' => $config['cache'],
         ]);
+
+        $container->getDefinition(CachedGoogleDriveClient::class)->setArgument(
+            '$cache',
+            new Reference('zoogle_cache_pool'),
+        );
+
+        $container->getDefinition(LocalImagePersistenceProcessor::class)->setArgument(
+            '$cache',
+            new Reference($config['cache_pool']),
+        );
     }
 }

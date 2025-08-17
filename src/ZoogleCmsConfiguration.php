@@ -14,6 +14,7 @@ final class ZoogleCmsConfiguration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder('zoogle_cms');
         $rootNode = $treeBuilder->getRootNode();
         $rootNode->children()->booleanNode('cache')->end(); // @phpstan-ignore-line
+        $rootNode->children()->scalarNode('cache_pool')->defaultValue('cache.app')->end();
 
         return $treeBuilder;
     }
