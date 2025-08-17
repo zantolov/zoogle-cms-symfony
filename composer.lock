@@ -3313,13 +3313,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zantolov/zoogle-cms.git",
-                "reference": "ea6620037b22b5680bae16afba867bfc2efb76cb"
+                "url": "git@github.com:zantolov/zoogle-cms.git",
+                "reference": "1e725ceb10745fbe5673a6b418331bf0812dc1ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zantolov/zoogle-cms/zipball/ea6620037b22b5680bae16afba867bfc2efb76cb",
-                "reference": "ea6620037b22b5680bae16afba867bfc2efb76cb",
+                "url": "https://api.github.com/repos/zantolov/zoogle-cms/zipball/1e725ceb10745fbe5673a6b418331bf0812dc1ad",
+                "reference": "1e725ceb10745fbe5673a6b418331bf0812dc1ad",
                 "shasum": ""
             },
             "require": {
@@ -3366,11 +3366,7 @@
                     "email": "zoran.antolovic.os@gmail.com"
                 }
             ],
-            "support": {
-                "source": "https://github.com/zantolov/zoogle-cms/tree/master",
-                "issues": "https://github.com/zantolov/zoogle-cms/issues"
-            },
-            "time": "2025-08-16T22:20:51+00:00"
+            "time": "2025-08-17T16:08:53+00:00"
         },
         {
             "name": "zantolov/zoogle-model",
