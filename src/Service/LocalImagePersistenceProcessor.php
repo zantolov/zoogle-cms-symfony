@@ -45,7 +45,7 @@ final class LocalImagePersistenceProcessor extends AbstractElementDocumentProces
         $proxyedImageUrl = $this->router->generate(
             'zoogle_cms_image',
             ['filename' => $filename],
-            RouterInterface::ABSOLUTE_URL,
+            RouterInterface::ABSOLUTE_PATH,
         );
 
         return $element->withSrc($proxyedImageUrl);
