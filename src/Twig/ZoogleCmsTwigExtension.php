@@ -9,8 +9,8 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 use Zantolov\Zoogle\Model\Model\Document\Document;
 use Zantolov\Zoogle\Model\Model\Document\DocumentElement;
-use Zantolov\Zoogle\Model\Service\HtmlConverter;
 use Zantolov\ZoogleCms\Content\Document\DocumentFactory;
+use Zantolov\ZoogleCms\Content\Html\Converting\HtmlConverter;
 use Zantolov\ZoogleCms\Content\Html\Processing\HtmlProcessingHub;
 
 final class ZoogleCmsTwigExtension extends AbstractExtension
