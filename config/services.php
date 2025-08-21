@@ -77,8 +77,7 @@ return function (ContainerConfigurator $configurator) {
     $services->instanceof(HtmlProcessor::class)->tag('zoogle_html_processor');
     $services->set(YoutubeVideoProcessor::class);
     $services->set(QuoteFormattingProcessor::class);
-    $services->set(LocalImagePersistenceProcessor::class)
-        ->arg('$cache', service('zoogle_cache_pool'));
+    $services->set(LocalImagePersistenceProcessor::class);
 
     $services->set(HtmlProcessingHub::class)
         ->args([

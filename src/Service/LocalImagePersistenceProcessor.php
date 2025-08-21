@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Zantolov\Zoogle\Symfony\Service;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 use Zantolov\Zoogle\Model\Model\Document\Document;
@@ -13,8 +14,11 @@ use Zantolov\Zoogle\Model\Service\Processing\AbstractElementDocumentProcessor;
 
 final class LocalImagePersistenceProcessor extends AbstractElementDocumentProcessor
 {
-    public function __construct(private CacheInterface $cache, private RouterInterface $router)
-    {
+    public function __construct(
+        private CacheInterface $cache,
+        private RouterInterface $router,
+        private LoggerInterface $logger,
+    ) {
     }
 
     public function priority(): int
@@ -40,6 +44,13 @@ final class LocalImagePersistenceProcessor extends AbstractElementDocumentProces
          * @todo add support for different persistence adapters
          */
         // Warm up cache
+        $this->logger->debug(
+            sprintf(
+                'Warming up cache with key %s by fetching image from %s',
+                $filename,
+                $element->src,
+            )
+        );
         $this->cache->get($filename, static fn (): string => \Safe\file_get_contents($element->src));
 
         $proxyedImageUrl = $this->router->generate(

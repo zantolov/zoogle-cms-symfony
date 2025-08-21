@@ -42,7 +42,7 @@ final class ZoogleCmsExtension extends Extension
 
         $container->getDefinition(CachedGoogleDriveClient::class)->setArgument(
             '$cache',
-            new Reference('zoogle_cache_pool'),
+            new Reference($config['cache_pool']),
         );
 
         $container->getDefinition(LocalImagePersistenceProcessor::class)->setArgument(
